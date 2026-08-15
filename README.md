@@ -8,7 +8,7 @@ A aplicação possibilita que o usuário realize o rastreador de seus hábitos, 
 
 | Integrante | email |
 |-------|-------|
-|Brendo Brito de Araujo| email |
+|Brendo Brito de Araujo| brendobrito004@gmail.com |
 |Jefferson Santos Alves | jeff.jsa@hotmail.com |
 
 ## 🧨 Motivação
