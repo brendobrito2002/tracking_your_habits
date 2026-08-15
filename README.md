@@ -1,16 +1,17 @@
 # tracking-habits
 
-📖 Descrição
+
+## 📖 Descrição
 A aplicação possibilita que o usuário realize o rastreador de seus hábitos, com a função de criar uma lista de hábitos e manter o progresso dele, o usuário recebe pontos de experiência diários referentes as marcações e visualiza seu progresso, além disso é possível que sejam criadas lista de tarefas diárias e lembretes.
 
-👨‍🦱 Equipe
+## 👨‍🦱 Equipe
 
 | Integrante | email |
 |-------|-------|
 |Brendo Brito de Araujo| email |
 |Jefferson Santos Alves | jeff.jsa@hotmail.com |
 
-🧨 Motivação
+## 🧨 Motivação
 A motivação para o desenvolvimento dessa aplicação dá pela necessidade de manter uma boa rotina de hábitos e com isso gerencia-los de forma eficiente e continua. Para manter a adesão e continuidade do usuário, a gameficação entra como uma das principais chave de motivação, através da compensação por ter concluído as tarefas diárias.
 
 O projeto inicial tem inspiração em tabelas de hábitos de papel que algumas pessoas utilizam para melhorarem suas rotinas, além da inspiração através de alguns aplicativos que fazem algum tipo de rastreio de processos, como: lvlup e Habitica.
