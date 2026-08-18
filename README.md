@@ -22,8 +22,6 @@ Controle de Hábitos
 Planejamento Semanal
 <img width="972" height="527" alt="image" src="https://github.com/user-attachments/assets/9db899cd-964a-4f2a-857a-7b4f9820293f" />
 
-Tabela de Rotina
-<img width="968" height="495" alt="image" src="https://github.com/user-attachments/assets/5911f2ce-44d9-4aa3-9408-ec68fed073bb" />
 
 ## 💻 Usuário
 
