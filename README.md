@@ -2,7 +2,7 @@
 
 
 ## 📖 Descrição
-A aplicação possibilita que o usuário realize o rastreador de seus hábitos, com a função de criar uma lista de hábitos e manter o progresso dele, o usuário recebe pontos de experiência diários referentes as marcações e visualiza seu progresso, além disso é possível que sejam criadas lista de tarefas diárias e lembretes.
+A aplicação possibilita que o usuário realize o rastreador de seus hábitos, com a função de criar uma lista de hábitos e manter o progresso dele, o usuário recebe pontos de experiência diários referentes as marcações e visualiza seu progresso.
 
 ## 👨‍🦱 Equipe
 
