@@ -1,17 +1,29 @@
-# tracking_your_habits
+# tracking-habits
 
-A new Flutter project.
 
-## Getting Started
+## 📖 Descrição
+A aplicação possibilita que o usuário realize o rastreador de seus hábitos, com a função de criar uma lista de hábitos e manter o progresso dele, o usuário recebe pontos de experiência diários referentes as marcações e visualiza seu progresso.
 
-This project is a starting point for a Flutter application.
+## 👨‍🦱 Equipe
 
-A few resources to get you started if this is your first Flutter project:
+| Integrante | email |
+|-------|-------|
+|Brendo Brito de Araujo| brendobrito004@gmail.com |
+|Jefferson Santos Alves | jeff.jsa@hotmail.com |
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🧨 Motivação
+A motivação para o desenvolvimento dessa aplicação dá pela necessidade de manter uma boa rotina de hábitos e com isso gerencia-los de forma eficiente e continua. Para manter a adesão e continuidade do usuário, a gameficação entra como uma das principais chave de motivação, através da compensação por ter concluído as tarefas diárias.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+O projeto inicial tem inspiração em tabelas de hábitos de papel que algumas pessoas utilizam para melhorarem suas rotinas, além da inspiração através de alguns aplicativos que fazem algum tipo de rastreio de processos, como: lvlup e Habitica.
+
+Controle de Hábitos
+<img width="978" height="616" alt="image" src="https://github.com/user-attachments/assets/a08840a7-f48e-47b7-a464-2492d412d4c9" />
+
+Planejamento Semanal
+<img width="972" height="527" alt="image" src="https://github.com/user-attachments/assets/9db899cd-964a-4f2a-857a-7b4f9820293f" />
+
+
+## 💻 Usuário
+
+A aplicação tem como perfil usuários que querem manter o foco em seus hábitos diários, incluindo tarefas simples para serem feitas e mantê-las de forma consistente, também tem como objetivo permitir que o usuário acumule pontos e veja o quanto consegue progredir com seu foco, recebendo pontos de experiência a cada ação concluída, tornando sua experiência em algo lúdico e interativo.
+>>>>>>> f4f093785acfad62a5bf6cbfaa0ac51f6ff07a58
