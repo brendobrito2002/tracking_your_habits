@@ -26,4 +26,6 @@ Planejamento Semanal
 ## 💻 Usuário
 
 A aplicação tem como perfil usuários que querem manter o foco em seus hábitos diários, incluindo tarefas simples para serem feitas e mantê-las de forma consistente, também tem como objetivo permitir que o usuário acumule pontos e veja o quanto consegue progredir com seu foco, recebendo pontos de experiência a cada ação concluída, tornando sua experiência em algo lúdico e interativo.
->>>>>>> f4f093785acfad62a5bf6cbfaa0ac51f6ff07a58
+
+
+[Backlog](https://docs.google.com/document/d/1eJx3kxg8wjplkFokz17YT4UbSiADxKxmqXQY0sU12Yw/edit?usp=sharing)
