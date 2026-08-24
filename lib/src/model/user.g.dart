@@ -5,6 +5,8 @@ part of 'user.dart';
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
+// arquivo gerado pelo build runner para interpretar os dados da tabela hive 
+
 
 class UserAdapter extends TypeAdapter<User> {
   @override
