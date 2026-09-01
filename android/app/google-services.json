@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "707544187649",
+    "project_id": "tracking-your-habits-app",
+    "storage_bucket": "tracking-your-habits-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707544187649:android:e630861b39d958d1cbd100",
+        "android_client_info": {
+          "package_name": "com.example.tracking_your_habits"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbcslkwWDePHsfHrHv7T-mCxaIO8w4lC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
