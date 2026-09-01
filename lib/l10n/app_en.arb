@@ -1,0 +1,11 @@
+{
+  "invalidEmail": "The email address is invalid.",
+  "userNotFound": "User not found.",
+  "wrongPassword": "Incorrect password.",
+  "invalidCredential": "Incorrect email or password.",
+  "emailAlreadyInUse": "This email is already registered.",
+  "weakPassword": "The password is too weak.",
+  "networkRequestFailed": "Check your internet connection.",
+  "tooManyRequests": "Too many attempts. Please try again later.",
+  "authenticationError": "An error occurred during authentication."
+}

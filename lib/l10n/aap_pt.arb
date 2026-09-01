@@ -1,0 +1,11 @@
+{
+  "invalidEmail": "O e-mail informado é inválido.",
+  "userNotFound": "Usuário não encontrado.",
+  "wrongPassword": "Senha incorreta.",
+  "invalidCredential": "E-mail ou senha incorretos.",
+  "emailAlreadyInUse": "Este e-mail já está cadastrado.",
+  "weakPassword": "A senha é muito fraca.",
+  "networkRequestFailed": "Verifique sua conexão com a internet.",
+  "tooManyRequests": "Muitas tentativas. Tente novamente mais tarde.",
+  "authenticatfffionError": "Ocorreu um erro durante a autenticação."
+}
