@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tracking_your_habits/src/models/user.dart';
 import 'src/app.dart';
 import 'firebase_options.dart';
+import 'package:provider/provider.dart';
+import 'src/dependancies.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +22,12 @@ Future<void> main() async{
 
   await Hive.openBox<User>('users');
 
-  runApp(const App());
+  runApp(
+  MultiProvider(
+    providers: appProviders,
+    child: const App(),
+  ),
+);
 }
 
 

@@ -9,6 +9,21 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get enterEmail => 'Enter your email.';
+
+  @override
+  String get enterPassword => 'Enter your password.';
+
+  @override
   String get invalidEmail => 'The email address is invalid.';
 
   @override

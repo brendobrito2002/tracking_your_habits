@@ -1,4 +1,10 @@
 {
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "enterEmail": "Enter your email.",
+  "enterPassword": "Enter your password.",
+
   "invalidEmail": "The email address is invalid.",
   "userNotFound": "User not found.",
   "wrongPassword": "Incorrect password.",

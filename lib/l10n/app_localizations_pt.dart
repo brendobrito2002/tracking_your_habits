@@ -9,6 +9,21 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
+  String get email => 'E-mail';
+
+  @override
+  String get password => 'Senha';
+
+  @override
+  String get login => 'Entrar';
+
+  @override
+  String get enterEmail => 'Informe o e-mail.';
+
+  @override
+  String get enterPassword => 'Informe a senha.';
+
+  @override
   String get invalidEmail => 'O e-mail informado é inválido.';
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'views/login_view.dart';
 
 import '../l10n/app_localizations.dart';
 
@@ -23,15 +24,8 @@ class App extends StatelessWidget {
         Locale('pt', 'BR'),
       ],
       
-      title: 'Tracking Your Habits',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Tracking Your Habits'),
-        ),
-        body: const Center(
-          child: Text('Firebase + Hive configurados!'),
-        ),
-      ),
+      home: const LoginView(),
+      
     );
   }
 }
