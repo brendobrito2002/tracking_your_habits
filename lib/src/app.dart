@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'views/login_view.dart';
+import 'views/login/login_view.dart';
 
 import '../l10n/app_localizations.dart';
 

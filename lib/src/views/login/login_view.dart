@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../l10n/app_localizations.dart';
+import 'package:tracking_your_habits/l10n/app_localizations.dart';
 import '/src/viewmodels/login_viewmodel.dart';
+import '../home/home_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -41,8 +42,13 @@ class _LoginViewState extends State<LoginView> {
     if (!mounted) return;
 
     if (success) {
-      // Por enquanto não vamos navegar para outra tela.
-      // Faremos isso quando criarmos a tela principal.
+      //purhReplacement para evitar que se houver retorno volte para login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HomeView(),
+          )
+      );
       return;
     }
 
