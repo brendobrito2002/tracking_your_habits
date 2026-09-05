@@ -53,10 +53,19 @@ class _HabitFormViewState extends State<HabitFormView> {
       return;
     }
 
-    if (_frequency == 'Personalizado' && _customDays.isEmpty) {
+    if ((_frequency == 'Semanal' || _frequency == 'Personalizado') &&
+        _customDays.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(l10n.selectCustomDay)));
+      ).showSnackBar(
+        SnackBar(
+          content: Text(
+            _frequency == 'Semanal'
+                ? 'Selecione um dia da semana.'
+                : l10n.selectCustomDay,
+          ),
+        ),
+      );
       return;
     }
 
@@ -67,11 +76,14 @@ class _HabitFormViewState extends State<HabitFormView> {
     }
 
     final habit = Habit(
-      id: widget.habit?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      id: widget.habit?.id ??
+          DateTime.now().millisecondsSinceEpoch.toString(),
       name: _nameController.text.trim(),
       description: _descriptionController.text.trim(),
       frequency: _frequency,
-      customDays: _frequency == 'Personalizado' ? List.from(_customDays) : [],
+      customDays: _frequency == 'Diário'
+          ? []
+          : List.from(_customDays),
       userId: firebaseUser.uid,
     );
 
@@ -104,7 +116,11 @@ class _HabitFormViewState extends State<HabitFormView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.habit == null ? l10n.newHabit : l10n.editHabit),
+        title: Text(
+          widget.habit == null
+              ? l10n.newHabit
+              : l10n.editHabit,
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
@@ -147,8 +163,14 @@ class _HabitFormViewState extends State<HabitFormView> {
                   border: const OutlineInputBorder(),
                 ),
                 items: [
-                  DropdownMenuItem(value: 'Diário', child: Text(l10n.daily)),
-                  DropdownMenuItem(value: 'Semanal', child: Text(l10n.weekly)),
+                  DropdownMenuItem(
+                    value: 'Diário',
+                    child: Text(l10n.daily),
+                  ),
+                  DropdownMenuItem(
+                    value: 'Semanal',
+                    child: Text(l10n.weekly),
+                  ),
                   DropdownMenuItem(
                     value: 'Personalizado',
                     child: Text(l10n.custom),
@@ -158,10 +180,60 @@ class _HabitFormViewState extends State<HabitFormView> {
                   if (value != null) {
                     setState(() {
                       _frequency = value;
+
+                      if (_frequency == 'Diário') {
+                        _customDays.clear();
+                      } else if (_frequency == 'Semanal' &&
+                          _customDays.length > 1) {
+                        _customDays.removeRange(
+                          1,
+                          _customDays.length,
+                        );
+                      }
                     });
                   }
                 },
               ),
+
+              if (_frequency == 'Semanal') ...[
+                const SizedBox(height: 16),
+
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Dia da semana',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                ...List.generate(weekDays.length, (index) {
+                  final day = index + 1;
+
+                  return RadioListTile<int>(
+                    title: Text(weekDays[index]),
+                    value: day,
+                    groupValue:
+                    _customDays.isNotEmpty
+                        ? _customDays.first
+                        : null,
+                    contentPadding: EdgeInsets.zero,
+                    onChanged: (selectedDay) {
+                      if (selectedDay == null) return;
+
+                      setState(() {
+                        _customDays
+                          ..clear()
+                          ..add(selectedDay);
+                      });
+                    },
+                  );
+                }),
+              ],
 
               if (_frequency == 'Personalizado') ...[
                 const SizedBox(height: 16),
@@ -207,7 +279,9 @@ class _HabitFormViewState extends State<HabitFormView> {
                 child: ElevatedButton(
                   onPressed: _saveHabit,
                   child: Text(
-                    widget.habit == null ? l10n.saveHabit : l10n.saveChanges,
+                    widget.habit == null
+                        ? l10n.saveHabit
+                        : l10n.saveChanges,
                   ),
                 ),
               ),

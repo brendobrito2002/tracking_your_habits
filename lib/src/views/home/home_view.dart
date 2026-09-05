@@ -7,6 +7,7 @@ import '../habits/habits_view.dart';
 import '../login/login_view.dart';
 import '../../repositories/auth_repository.dart';
 import '../../viewmodels/user_viewmodel.dart';
+import '../calendar/calendar_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -106,19 +107,35 @@ class _HomeViewState extends State<HomeView> {
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(
           height: 60,
-          child: Center(
-            child: IconButton(
-              icon: const Icon(Icons.check_circle_outline),
-              tooltip: l10n.habits,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const HabitsView(),
-                  ),
-                );
-              },
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.check_circle_outline),
+                tooltip: l10n.habits,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const HabitsView(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 24),
+              IconButton(
+                icon: const Icon(Icons.calendar_month),
+                tooltip: 'Calendário',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const CalendarView(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),
