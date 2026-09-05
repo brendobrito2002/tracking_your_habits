@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '/../l10n/app_localizations.dart';
 import '../../models/habit.dart';
@@ -59,12 +60,19 @@ class _HabitFormViewState extends State<HabitFormView> {
       return;
     }
 
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    if (firebaseUser == null) {
+      return;
+    }
+
     final habit = Habit(
       id: widget.habit?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
       name: _nameController.text.trim(),
       description: _descriptionController.text.trim(),
       frequency: _frequency,
       customDays: _frequency == 'Personalizado' ? List.from(_customDays) : [],
+      userId: firebaseUser.uid,
     );
 
     final viewModel = context.read<HabitViewModel>();

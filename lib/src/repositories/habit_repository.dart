@@ -6,8 +6,8 @@ class HabitRepository {
 
   HabitRepository(this.dataSource);
 
-  List<Habit> getHabits() {
-    return dataSource.getHabits();
+  List<Habit> getHabits(String userId) {
+    return dataSource.getHabits(userId);
   }
 
   Future<void> addHabit(Habit habit) async {
