@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tracking_your_habits/src/models/user.dart';
+import 'package:tracking_your_habits/src/models/habit.dart';
 import 'src/app.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -19,8 +20,10 @@ Future<void> main() async{
   await Hive.initFlutter();
 
   Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(HabitAdapter());
 
   await Hive.openBox<User>('users');
+  await Hive.openBox<Habit>('habits');
 
   runApp(
   MultiProvider(
