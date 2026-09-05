@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tracking_your_habits/l10n/app_localizations.dart';
 import '/src/viewmodels/login_viewmodel.dart';
 import '../home/home_view.dart';
+import '../register/register_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -184,6 +185,18 @@ class _LoginViewState extends State<LoginView> {
                               )
                             : Text(l10n.login),
                       ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const RegisterView(),
+                          ),
+                        );
+                      },
+                      child: const Text('Criar uma conta'),
                     ),
                   ],
                 ),
