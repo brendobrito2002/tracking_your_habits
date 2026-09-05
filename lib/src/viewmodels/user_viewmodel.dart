@@ -84,4 +84,25 @@ class UserViewModel extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> removeExperience(int amount) async {
+    if (_user == null) {
+      return;
+    }
+
+    _user!.experience -= amount;
+
+    if (_user!.experience < 0 && _user!.level > 1) {
+      _user!.level--;
+      _user!.experience += 100 + (( _user!.level - 1) * 50);
+    }
+
+    if (_user!.experience < 0) {
+      _user!.experience = 0;
+    }
+
+    await repository.updateUser(_user!);
+
+    notifyListeners();
+  }
 }

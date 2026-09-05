@@ -17,6 +17,10 @@ import 'viewmodels/user_viewmodel.dart';
 
 import 'viewmodels/register_viewmodel.dart';
 
+import 'datasources/checkin_datasource.dart';
+import 'repositories/checkin_repository.dart';
+import 'viewmodels/checkin_viewmodel.dart';
+
 final appProviders = [
   Provider<AuthDataSource>(
     create: (_) => AuthDataSource(),
@@ -82,6 +86,27 @@ final appProviders = [
     create: (context) {
       return UserViewModel(
         context.read<UserRepository>(),
+      );
+    },
+  ),
+
+  Provider<CheckInDataSource>(
+    create: (_) => CheckInDataSource(),
+  ),
+
+  Provider<CheckInRepository>(
+    create: (context) {
+      return CheckInRepository(
+        context.read<CheckInDataSource>(),
+      );
+    },
+  ),
+
+  ChangeNotifierProvider<CheckInViewModel>(
+    create: (context) {
+      return CheckInViewModel(
+        context.read<CheckInRepository>(),
+        context.read<UserViewModel>(),
       );
     },
   ),
