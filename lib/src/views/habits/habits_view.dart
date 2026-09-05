@@ -2,8 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../repositories/checkin_repository.dart';
+import '../../viewmodels/user_viewmodel.dart';
 import '/../l10n/app_localizations.dart';
 import '../../viewmodels/habit_viewmodel.dart';
+import '../../viewmodels/checkin_viewmodel.dart';
 import 'habits_form_view.dart';
 
 class HabitsView extends StatefulWidget {
@@ -25,6 +28,7 @@ class _HabitsViewState extends State<HabitsView> {
         if (!mounted) return;
 
         context.read<HabitViewModel>().loadHabits(firebaseUser.uid);
+        context.read<CheckInViewModel>().loadCheckIns(firebaseUser.uid);
       });
     }
   }
@@ -34,7 +38,9 @@ class _HabitsViewState extends State<HabitsView> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.habits)),
+      appBar: AppBar(
+        title: Text(l10n.habits),
+      ),
       body: Consumer<HabitViewModel>(
         builder: (context, viewModel, child) {
           if (viewModel.habits.isEmpty) {
@@ -59,6 +65,54 @@ class _HabitsViewState extends State<HabitsView> {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      Consumer<CheckInViewModel>(
+                        builder: (context, checkInViewModel, child) {
+                          final firebaseUser =
+                              FirebaseAuth.instance.currentUser;
+
+                          if (firebaseUser == null) {
+                            return const SizedBox.shrink();
+                          }
+
+                          final today = DateTime.now();
+
+                          final isChecked =
+                          checkInViewModel.isCheckedIn(
+                            habit.id,
+                            firebaseUser.uid,
+                            today,
+                          );
+
+                          return IconButton(
+                            icon: Icon(
+                              isChecked
+                                  ? Icons.check_circle
+                                  : Icons.check_circle_outline,
+                            ),
+                            tooltip: isChecked
+                                ? 'Desfazer conclusão'
+                                : 'Marcar como concluído',
+                            onPressed: () async {
+                              if (isChecked) {
+                                ChangeNotifierProvider<CheckInViewModel>(
+                                  create: (context) {
+                                    return CheckInViewModel(
+                                      context.read<CheckInRepository>(),
+                                      context.read<UserViewModel>(),
+                                    );
+                                  },
+                                );
+                              } else {
+                                await checkInViewModel.checkIn(
+                                  habit: habit,
+                                  userId: firebaseUser.uid,
+                                  date: today,
+                                );
+                              }
+                            },
+                          );
+                        },
+                      ),
                       Text(
                         switch (habit.frequency) {
                           'Diário' => l10n.daily,
