@@ -5,7 +5,6 @@ part of 'user.dart';
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
-// arquivo gerado pelo build runner para interpretar os dados da tabela hive
 
 class UserAdapter extends TypeAdapter<User> {
   @override
@@ -21,19 +20,25 @@ class UserAdapter extends TypeAdapter<User> {
       id: fields[0] as String,
       name: fields[1] as String,
       email: fields[2] as String,
+      level: fields[3] as int,
+      experience: fields[4] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.email);
+      ..write(obj.email)
+      ..writeByte(3)
+      ..write(obj.level)
+      ..writeByte(4)
+      ..write(obj.experience);
   }
 
   @override

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_your_habits/src/datasources/user_datasource.dart';
+import 'package:tracking_your_habits/src/repositories/user_repository.dart';
 
 import 'datasources/auth_datasource.dart';
 import 'repositories/auth_repository.dart';
@@ -7,6 +10,12 @@ import 'viewmodels/login_viewmodel.dart';
 import 'datasources/habit_datasource.dart';
 import 'repositories/habit_repository.dart';
 import 'viewmodels/habit_viewmodel.dart';
+
+import 'datasources/user_datasource.dart';
+import 'repositories/user_repository.dart';
+import 'viewmodels/user_viewmodel.dart';
+
+import 'viewmodels/register_viewmodel.dart';
 
 final appProviders = [
   Provider<AuthDataSource>(
@@ -29,6 +38,14 @@ final appProviders = [
     },
   ),
 
+  ChangeNotifierProvider<RegisterViewModel>(
+    create: (context) {
+      return RegisterViewModel(
+        context.read<AuthRepository>(),
+      );
+    },
+  ),
+
   Provider<HabitDataSource>(
     create: (_) => HabitDataSource(),
   ),
@@ -43,13 +60,29 @@ final appProviders = [
 
   ChangeNotifierProvider<HabitViewModel>(
     create: (context) {
-      final viewModel = HabitViewModel(
+      return HabitViewModel(
         context.read<HabitRepository>(),
       );
+    },
+  ),
 
-      viewModel.loadHabits();
+  Provider<UserDataSource>(
+    create: (_) => UserDataSource(),
+  ),
 
-      return viewModel;
+  Provider<UserRepository>(
+    create: (context) {
+      return UserRepository(
+        context.read<UserDataSource>(),
+      );
+    },
+  ),
+
+  ChangeNotifierProvider<UserViewModel>(
+    create: (context) {
+      return UserViewModel(
+        context.read<UserRepository>(),
+      );
     },
   ),
 ];
