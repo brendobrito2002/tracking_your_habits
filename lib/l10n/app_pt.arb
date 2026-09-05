@@ -1,0 +1,52 @@
+{
+  "email": "E-mail",
+  "password": "Senha",
+  "login": "Entrar",
+  "enterEmail": "Informe o e-mail.",
+  "enterPassword": "Informe a senha.",
+
+  "invalidEmail": "O e-mail informado é inválido.",
+  "userNotFound": "Usuário não encontrado.",
+  "wrongPassword": "Senha incorreta.",
+  "invalidCredential": "E-mail ou senha incorretos.",
+  "emailAlreadyInUse": "Este e-mail já está cadastrado.",
+  "weakPassword": "A senha é muito fraca.",
+  "networkRequestFailed": "Verifique sua conexão com a internet.",
+  "tooManyRequests": "Muitas tentativas. Tente novamente mais tarde.",
+  "authenticationError": "Ocorreu um erro durante a autenticação.",
+
+  "appTitle": "Tracking Your Habits",
+  "loginSuccess": "Login realizado com sucesso!",
+  "habits": "Hábitos",
+  "noHabits": "Nenhum hábito cadastrado.",
+  "newHabit": "Novo hábito",
+  "editHabit": "Editar hábito",
+  "name": "Nome",
+  "description": "Descrição",
+  "frequency": "Frequência",
+  "daily": "Diário",
+  "weekly": "Semanal",
+  "custom": "Personalizado",
+  "customDays": "Dias da semana",
+  "monday": "Segunda",
+  "tuesday": "Terça",
+  "wednesday": "Quarta",
+  "thursday": "Quinta",
+  "friday": "Sexta",
+  "saturday": "Sábado",
+  "sunday": "Domingo",
+  "saveHabit": "Salvar hábito",
+  "saveChanges": "Salvar alterações",
+  "enterHabitName": "Informe o nome do hábito.",
+  "selectCustomDay": "Selecione pelo menos um dia da semana.",
+  "deleteHabit": "Excluir hábito",
+  "deleteHabitConfirmation": "Deseja excluir o hábito \"{habitName}\"?",
+  "@deleteHabitConfirmation": {
+    "placeholders": {
+      "habitName": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Cancelar"
+}
