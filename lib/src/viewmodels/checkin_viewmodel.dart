@@ -58,6 +58,24 @@ class CheckInViewModel extends ChangeNotifier {
     required String userId,
     required DateTime date,
   }) async {
+    final today = DateTime.now();
+
+    final currentDate = DateTime(
+      today.year,
+      today.month,
+      today.day,
+    );
+
+    final checkInDate = DateTime(
+      date.year,
+      date.month,
+      date.day,
+    );
+
+    if (checkInDate.isAfter(currentDate)) {
+      return;
+    }
+
     final existingCheckIn = repository.getCheckIn(
       habit.id,
       userId,

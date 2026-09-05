@@ -22,6 +22,9 @@ class Habit extends HiveObject {
   @HiveField(5)
   final String userId;
 
+  @HiveField(6)
+  final DateTime createdAt;
+
   Habit({
     required this.id,
     required this.name,
@@ -29,5 +32,6 @@ class Habit extends HiveObject {
     required this.frequency,
     this.customDays = const [],
     required this.userId,
+    required this.createdAt,
   });
 }

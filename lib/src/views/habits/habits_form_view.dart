@@ -85,6 +85,7 @@ class _HabitFormViewState extends State<HabitFormView> {
           ? []
           : List.from(_customDays),
       userId: firebaseUser.uid,
+      createdAt: widget.habit?.createdAt ?? DateTime.now(),
     );
 
     final viewModel = context.read<HabitViewModel>();

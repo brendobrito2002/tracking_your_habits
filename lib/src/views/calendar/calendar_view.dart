@@ -71,12 +71,45 @@ class _CalendarViewState extends State<CalendarView> {
     );
   }
 
+  bool _isFutureDay(DateTime day) {
+    final today = DateTime.now();
+
+    final currentDate = DateTime(
+      today.year,
+      today.month,
+      today.day,
+    );
+
+    final selectedDate = DateTime(
+      day.year,
+      day.month,
+      day.day,
+    );
+
+    return selectedDate.isAfter(currentDate);
+  }
+
   List<Habit> _getHabitsForDay(
       DateTime day,
       HabitViewModel habitViewModel,
       ) {
     return habitViewModel.habits
-        .where((habit) => _isHabitScheduledForDay(habit, day))
+        .where((habit) {
+      final createdDate = DateTime(
+        habit.createdAt.year,
+        habit.createdAt.month,
+        habit.createdAt.day,
+      );
+
+      final selectedDate = DateTime(
+        day.year,
+        day.month,
+        day.day,
+      );
+
+      return !selectedDate.isBefore(createdDate) &&
+          _isHabitScheduledForDay(habit, day);
+    })
         .toList();
   }
 
@@ -276,6 +309,24 @@ class _CalendarViewState extends State<CalendarView> {
                           subtitle: Text(
                             habit.description,
                           ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.check_circle),
+                            tooltip: 'Desfazer conclusão',
+                            onPressed: () async {
+                              final firebaseUser =
+                                  FirebaseAuth.instance.currentUser;
+
+                              if (firebaseUser == null) return;
+
+                              await context
+                                  .read<CheckInViewModel>()
+                                  .removeCheckIn(
+                                habit: habit,
+                                userId: firebaseUser.uid,
+                                date: _selectedDay,
+                              );
+                            },
+                          ),
                         );
                       },
                     ),
@@ -289,6 +340,24 @@ class _CalendarViewState extends State<CalendarView> {
                           title: Text(habit.name),
                           subtitle: Text(
                             habit.description,
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.check_circle_outline),
+                            tooltip: 'Marcar como concluído',
+                            onPressed: () async {
+                              final firebaseUser =
+                                  FirebaseAuth.instance.currentUser;
+
+                              if (firebaseUser == null) return;
+
+                              await context
+                                  .read<CheckInViewModel>()
+                                  .checkIn(
+                                habit: habit,
+                                userId: firebaseUser.uid,
+                                date: _selectedDay,
+                              );
+                            },
                           ),
                         );
                       },
