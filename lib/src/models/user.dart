@@ -15,9 +15,17 @@ class User extends HiveObject {
   @HiveField(2)
   final String email;
 
+  @HiveField(3)
+  int level;
+
+  @HiveField(4)
+  int experience;
+
   User({
     required this.id,
     required this.name,
     required this.email,
+    this.level = 1,
+    this.experience = 0,
   });
 }
