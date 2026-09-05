@@ -49,4 +49,87 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get authenticationError => 'Ocorreu um erro durante a autenticação.';
+
+  @override
+  String get appTitle => 'Tracking Your Habits';
+
+  @override
+  String get loginSuccess => 'Login realizado com sucesso!';
+
+  @override
+  String get habits => 'Hábitos';
+
+  @override
+  String get noHabits => 'Nenhum hábito cadastrado.';
+
+  @override
+  String get newHabit => 'Novo hábito';
+
+  @override
+  String get editHabit => 'Editar hábito';
+
+  @override
+  String get name => 'Nome';
+
+  @override
+  String get description => 'Descrição';
+
+  @override
+  String get frequency => 'Frequência';
+
+  @override
+  String get daily => 'Diário';
+
+  @override
+  String get weekly => 'Semanal';
+
+  @override
+  String get custom => 'Personalizado';
+
+  @override
+  String get customDays => 'Dias da semana';
+
+  @override
+  String get monday => 'Segunda';
+
+  @override
+  String get tuesday => 'Terça';
+
+  @override
+  String get wednesday => 'Quarta';
+
+  @override
+  String get thursday => 'Quinta';
+
+  @override
+  String get friday => 'Sexta';
+
+  @override
+  String get saturday => 'Sábado';
+
+  @override
+  String get sunday => 'Domingo';
+
+  @override
+  String get saveHabit => 'Salvar hábito';
+
+  @override
+  String get saveChanges => 'Salvar alterações';
+
+  @override
+  String get enterHabitName => 'Informe o nome do hábito.';
+
+  @override
+  String get selectCustomDay => 'Selecione pelo menos um dia da semana.';
+
+  @override
+  String get deleteHabit => 'Excluir hábito';
+
+  @override
+  String deleteHabitConfirmation(String habitName) {
+    return 'Deseja excluir o hábito \"$habitName\"?';
+  }
+
+  @override
+  String get cancel => 'Cancelar';
 }

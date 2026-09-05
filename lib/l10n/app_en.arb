@@ -13,5 +13,40 @@
   "weakPassword": "The password is too weak.",
   "networkRequestFailed": "Check your internet connection.",
   "tooManyRequests": "Too many attempts. Please try again later.",
-  "authenticationError": "An error occurred during authentication."
+  "authenticationError": "An error occurred during authentication.",
+
+  "appTitle": "Tracking Your Habits",
+  "loginSuccess": "Login successful!",
+  "habits": "Habits",
+  "noHabits": "No habits registered.",
+  "newHabit": "New habit",
+  "editHabit": "Edit habit",
+  "name": "Name",
+  "description": "Description",
+  "frequency": "Frequency",
+  "daily": "Daily",
+  "weekly": "Weekly",
+  "custom": "Custom",
+  "customDays": "Days of the week",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "saveHabit": "Save habit",
+  "saveChanges": "Save changes",
+  "enterHabitName": "Enter the habit name.",
+  "selectCustomDay": "Select at least one day of the week.",
+  "deleteHabit": "Delete habit",
+  "deleteHabitConfirmation": "Do you want to delete the habit \"{habitName}\"?",
+  "@deleteHabitConfirmation": {
+    "placeholders": {
+      "habitName": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Cancel"
 }

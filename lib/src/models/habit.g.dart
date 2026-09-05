@@ -1,39 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'habit.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
-// arquivo gerado pelo build runner para interpretar os dados da tabela hive
 
-class UserAdapter extends TypeAdapter<User> {
+class HabitAdapter extends TypeAdapter<Habit> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  User read(BinaryReader reader) {
+  Habit read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return Habit(
       id: fields[0] as String,
       name: fields[1] as String,
-      email: fields[2] as String,
+      description: fields[2] as String,
+      frequency: fields[3] as String,
+      customDays: (fields[4] as List?)?.cast<int>() ?? [],
     );
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, Habit obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.email);
+      ..write(obj.description)
+      ..writeByte(3)
+      ..write(obj.frequency)
+      ..writeByte(4)
+      ..write(obj.customDays);
   }
 
   @override
@@ -42,7 +47,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is HabitAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
