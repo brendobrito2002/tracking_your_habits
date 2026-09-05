@@ -25,11 +25,12 @@ class AuthRepository {
   }
 
   Future<void> register(
-    String email,
-    String password,
-  ) async {
+      String name,
+      String email,
+      String password,
+      ) async {
     try {
-      await dataSource.register(email, password);
+      await dataSource.register(name, email, password);
     } on FirebaseAuthException catch (e) {
       throw AuthException(e.code);
     }
