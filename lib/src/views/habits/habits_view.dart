@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../repositories/checkin_repository.dart';
-import '../../viewmodels/user_viewmodel.dart';
 import '/../l10n/app_localizations.dart';
 import '../../viewmodels/habit_viewmodel.dart';
 import '../../viewmodels/checkin_viewmodel.dart';
@@ -94,13 +92,10 @@ class _HabitsViewState extends State<HabitsView> {
                                 : 'Marcar como concluído',
                             onPressed: () async {
                               if (isChecked) {
-                                ChangeNotifierProvider<CheckInViewModel>(
-                                  create: (context) {
-                                    return CheckInViewModel(
-                                      context.read<CheckInRepository>(),
-                                      context.read<UserViewModel>(),
-                                    );
-                                  },
+                                await checkInViewModel.removeCheckIn(
+                                  habit: habit,
+                                  userId: firebaseUser.uid,
+                                  date: today,
                                 );
                               } else {
                                 await checkInViewModel.checkIn(
