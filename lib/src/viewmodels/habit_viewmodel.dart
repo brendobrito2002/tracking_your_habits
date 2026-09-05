@@ -12,8 +12,8 @@ class HabitViewModel extends ChangeNotifier {
 
   List<Habit> get habits => List.unmodifiable(_habits);
 
-  void loadHabits() {
-    _habits = repository.getHabits();
+  void loadHabits(String userId) {
+    _habits = repository.getHabits(userId);
 
     notifyListeners();
   }
@@ -21,7 +21,7 @@ class HabitViewModel extends ChangeNotifier {
   Future<void> addHabit(Habit habit) async {
     await repository.addHabit(habit);
 
-    _habits = repository.getHabits();
+    _habits = repository.getHabits(habit.userId);
 
     notifyListeners();
   }
@@ -29,15 +29,15 @@ class HabitViewModel extends ChangeNotifier {
   Future<void> updateHabit(Habit habit) async {
     await repository.updateHabit(habit);
 
-    _habits = repository.getHabits();
+    _habits = repository.getHabits(habit.userId);
 
     notifyListeners();
   }
 
-  Future<void> deleteHabit(String id) async {
+  Future<void> deleteHabit(String id, String userId) async {
     await repository.deleteHabit(id);
 
-    _habits = repository.getHabits();
+    _habits = repository.getHabits(userId);
 
     notifyListeners();
   }

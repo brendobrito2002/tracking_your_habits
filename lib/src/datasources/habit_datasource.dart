@@ -9,8 +9,10 @@ class HabitDataSource {
     Box<Habit>? habitBox,
   }) : _habitBox = habitBox ?? Hive.box<Habit>('habits');
 
-  List<Habit> getHabits() {
-    return _habitBox.values.toList();
+  List<Habit> getHabits(String userId) {
+    return _habitBox.values
+        .where((habit) => habit.userId == userId)
+        .toList();
   }
 
   Future<void> addHabit(Habit habit) async {

@@ -19,11 +19,15 @@ class Habit extends HiveObject {
   @HiveField(4)
   final List<int> customDays;
 
+  @HiveField(5)
+  final String userId;
+
   Habit({
     required this.id,
     required this.name,
     required this.description,
     required this.frequency,
     this.customDays = const [],
+    required this.userId,
   });
 }

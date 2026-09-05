@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -5,8 +6,28 @@ import '/../l10n/app_localizations.dart';
 import '../../viewmodels/habit_viewmodel.dart';
 import 'habits_form_view.dart';
 
-class HabitsView extends StatelessWidget {
+class HabitsView extends StatefulWidget {
   const HabitsView({super.key});
+
+  @override
+  State<HabitsView> createState() => _HabitsViewState();
+}
+
+class _HabitsViewState extends State<HabitsView> {
+  @override
+  void initState() {
+    super.initState();
+
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    if (firebaseUser != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+
+        context.read<HabitViewModel>().loadHabits(firebaseUser.uid);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +39,10 @@ class HabitsView extends StatelessWidget {
         builder: (context, viewModel, child) {
           if (viewModel.habits.isEmpty) {
             return Center(
-              child: Text(l10n.noHabits, textAlign: TextAlign.center),
+              child: Text(
+                l10n.noHabits,
+                textAlign: TextAlign.center,
+              ),
             );
           }
 
@@ -35,12 +59,14 @@ class HabitsView extends StatelessWidget {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(switch (habit.frequency) {
-                        'Diário' => l10n.daily,
-                        'Semanal' => l10n.weekly,
-                        'Personalizado' => l10n.custom,
-                        _ => habit.frequency,
-                      }),
+                      Text(
+                        switch (habit.frequency) {
+                          'Diário' => l10n.daily,
+                          'Semanal' => l10n.weekly,
+                          'Personalizado' => l10n.custom,
+                          _ => habit.frequency,
+                        },
+                      ),
                       IconButton(
                         icon: const Icon(Icons.edit),
                         tooltip: l10n.editHabit,
@@ -84,8 +110,11 @@ class HabitsView extends StatelessWidget {
                           );
 
                           if (confirm == true) {
-                            await context.read<HabitViewModel>().deleteHabit(
+                            await context
+                                .read<HabitViewModel>()
+                                .deleteHabit(
                               habit.id,
+                              habit.userId,
                             );
                           }
                         },
@@ -102,7 +131,9 @@ class HabitsView extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => const HabitFormView()),
+            MaterialPageRoute(
+              builder: (_) => const HabitFormView(),
+            ),
           );
         },
         tooltip: l10n.newHabit,
