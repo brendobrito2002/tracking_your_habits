@@ -14,9 +14,9 @@ class LoginViewModel extends ChangeNotifier {
   String? get errorCode => _errorCode;
 
   Future<bool> login(
-    String email,
-    String password,
-  ) async {
+      String email,
+      String password,
+      ) async {
     _isLoading = true;
     _errorCode = null;
 
@@ -35,6 +35,66 @@ class LoginViewModel extends ChangeNotifier {
 
       notifyListeners();
     }
+  }
+
+  Future<bool> checkEmailVerified() async {
+    _isLoading = true;
+    _errorCode = null;
+
+    notifyListeners();
+
+    try {
+      return await repository.checkEmailVerified();
+    } on AuthException catch (e) {
+      _errorCode = e.code;
+      return false;
+    } finally {
+      _isLoading = false;
+
+      notifyListeners();
+    }
+  }
+
+  Future<bool> resendEmailVerification() async {
+    _isLoading = true;
+    _errorCode = null;
+
+    notifyListeners();
+
+    try {
+      await repository.resendEmailVerification();
+      return true;
+    } on AuthException catch (e) {
+      _errorCode = e.code;
+      return false;
+    } finally {
+      _isLoading = false;
+
+      notifyListeners();
+    }
+  }
+
+  Future<bool> resetPassword(String email) async {
+    _isLoading = true;
+    _errorCode = null;
+
+    notifyListeners();
+
+    try {
+      await repository.resetPassword(email);
+      return true;
+    } on AuthException catch (e) {
+      _errorCode = e.code;
+      return false;
+    } finally {
+      _isLoading = false;
+
+      notifyListeners();
+    }
+  }
+
+  Future<void> logout() async {
+    await repository.logout();
   }
 
   void clearError() {

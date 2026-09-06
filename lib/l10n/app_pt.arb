@@ -48,5 +48,16 @@
       }
     }
   },
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "forgotPassword": "Esqueceu sua senha?",
+  "passwordResetEmailSent": "E-mail de recuperação de senha enviado.",
+  "confirm": "Confirmar",
+  "createAccount": "Criar uma conta",
+  "verifyEmail": "Verifique seu e-mail",
+  "verificationEmailDescription": "Enviamos um link de confirmação para seu e-mail. Confirme seu e-mail para finalizar o cadastro.",
+  "alreadyVerified": "Já confirmei meu e-mail",
+  "resendVerificationEmail": "Enviar e-mail novamente",
+  "emailNotVerified": "Seu e-mail ainda não foi confirmado.",
+  "verificationEmailSent": "E-mail de confirmação enviado.",
+  "logout": "Sair"
 }

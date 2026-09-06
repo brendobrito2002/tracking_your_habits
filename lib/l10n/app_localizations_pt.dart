@@ -132,4 +132,37 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get cancel => 'Cancelar';
+
+  @override
+  String get forgotPassword => 'Esqueceu sua senha?';
+
+  @override
+  String get passwordResetEmailSent => 'E-mail de recuperação de senha enviado.';
+
+  @override
+  String get confirm => 'Confirmar';
+
+  @override
+  String get createAccount => 'Criar uma conta';
+
+  @override
+  String get verifyEmail => 'Verifique seu e-mail';
+
+  @override
+  String get verificationEmailDescription => 'Enviamos um link de confirmação para seu e-mail. Confirme seu e-mail para finalizar o cadastro.';
+
+  @override
+  String get alreadyVerified => 'Já confirmei meu e-mail';
+
+  @override
+  String get resendVerificationEmail => 'Enviar e-mail novamente';
+
+  @override
+  String get emailNotVerified => 'Seu e-mail ainda não foi confirmado.';
+
+  @override
+  String get verificationEmailSent => 'E-mail de confirmação enviado.';
+
+  @override
+  String get logout => 'Sair';
 }

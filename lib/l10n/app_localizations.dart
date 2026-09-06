@@ -340,6 +340,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot your password?'**
+  String get forgotPassword;
+
+  /// No description provided for @passwordResetEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset email sent.'**
+  String get passwordResetEmailSent;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get createAccount;
+
+  /// No description provided for @verifyEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your email'**
+  String get verifyEmail;
+
+  /// No description provided for @verificationEmailDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a verification link to your email. Confirm your email to finish creating your account.'**
+  String get verificationEmailDescription;
+
+  /// No description provided for @alreadyVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'I have verified my email'**
+  String get alreadyVerified;
+
+  /// No description provided for @resendVerificationEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Send email again'**
+  String get resendVerificationEmail;
+
+  /// No description provided for @emailNotVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Your email has not been verified yet.'**
+  String get emailNotVerified;
+
+  /// No description provided for @verificationEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification email sent.'**
+  String get verificationEmailSent;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get logout;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
