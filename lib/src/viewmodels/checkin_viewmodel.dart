@@ -167,4 +167,130 @@ class CheckInViewModel extends ChangeNotifier {
 
     return best;
   }
+
+  double getSuccessRate(List<Habit> habits) {
+    if (habits.isEmpty) {
+      return 0;
+    }
+
+    int expected = 0;
+    int completed = 0;
+
+    final today = DateTime.now();
+    final currentDate = DateTime(
+      today.year,
+      today.month,
+      today.day,
+    );
+
+    for (final habit in habits) {
+      final startDate = DateTime(
+        habit.createdAt.year,
+        habit.createdAt.month,
+        habit.createdAt.day,
+      );
+
+      if (startDate.isAfter(currentDate)) {
+        continue;
+      }
+
+      final habitCheckIns = _checkIns
+          .where((checkIn) => checkIn.habitId == habit.id)
+          .toList();
+
+      switch (habit.frequency) {
+        case 'Diário':
+          final totalDays = currentDate
+              .difference(startDate)
+              .inDays +
+              1;
+
+          expected += totalDays;
+
+          completed += habitCheckIns
+              .map(
+                (checkIn) => DateTime(
+              checkIn.date.year,
+              checkIn.date.month,
+              checkIn.date.day,
+            ),
+          )
+              .toSet()
+              .where(
+                (date) =>
+            !date.isBefore(startDate) &&
+                !date.isAfter(currentDate),
+          )
+              .length;
+
+          break;
+
+        case 'Semanal':
+          final totalDays = currentDate
+              .difference(startDate)
+              .inDays +
+              1;
+
+          expected += ((totalDays - 1) ~/ 7) + 1;
+
+          final weeks = <int>{};
+
+          for (final checkIn in habitCheckIns) {
+            final date = DateTime(
+              checkIn.date.year,
+              checkIn.date.month,
+              checkIn.date.day,
+            );
+
+            if (date.isBefore(startDate) ||
+                date.isAfter(currentDate)) {
+              continue;
+            }
+
+            final week = date.difference(startDate).inDays ~/ 7;
+            weeks.add(week);
+          }
+
+          completed += weeks.length;
+
+          break;
+
+        case 'Personalizado':
+          for (
+          DateTime date = startDate;
+          !date.isAfter(currentDate);
+          date = date.add(const Duration(days: 1))
+          ) {
+            if (habit.customDays.contains(date.weekday)) {
+              expected++;
+            }
+          }
+
+          completed += habitCheckIns
+              .map(
+                (checkIn) => DateTime(
+              checkIn.date.year,
+              checkIn.date.month,
+              checkIn.date.day,
+            ),
+          )
+              .toSet()
+              .where(
+                (date) =>
+            !date.isBefore(startDate) &&
+                !date.isAfter(currentDate) &&
+                habit.customDays.contains(date.weekday),
+          )
+              .length;
+
+          break;
+      }
+    }
+
+    if (expected == 0) {
+      return 0;
+    }
+
+    return completed / expected;
+  }
 }
