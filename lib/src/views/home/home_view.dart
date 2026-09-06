@@ -9,6 +9,8 @@ import '../../repositories/auth_repository.dart';
 import '../../viewmodels/user_viewmodel.dart';
 import '../calendar/calendar_view.dart';
 import '../../viewmodels/checkin_viewmodel.dart';
+import '../statistics/statistics_view.dart';
+import '../../viewmodels/habit_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -35,6 +37,10 @@ class _HomeViewState extends State<HomeView> {
         );
 
         context.read<CheckInViewModel>().loadCheckIns(
+          firebaseUser.uid,
+        );
+
+        context.read<HabitViewModel>().loadHabits(
           firebaseUser.uid,
         );
       });
@@ -160,6 +166,19 @@ class _HomeViewState extends State<HomeView> {
                     context,
                     MaterialPageRoute(
                       builder: (_) => const CalendarView(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 24),
+              IconButton(
+                icon: const Icon(Icons.bar_chart),
+                tooltip: 'Estatísticas',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const StatisticsView(),
                     ),
                   );
                 },
