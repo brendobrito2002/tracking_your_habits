@@ -48,5 +48,16 @@
       }
     }
   },
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "forgotPassword": "Forgot your password?",
+  "passwordResetEmailSent": "Password reset email sent.",
+  "confirm": "Confirm",
+  "createAccount": "Create an account",
+  "verifyEmail": "Verify your email",
+  "verificationEmailDescription": "We sent a verification link to your email. Confirm your email to finish creating your account.",
+  "alreadyVerified": "I have verified my email",
+  "resendVerificationEmail": "Send email again",
+  "emailNotVerified": "Your email has not been verified yet.",
+  "verificationEmailSent": "Verification email sent.",
+  "logout": "Sign out"
 }

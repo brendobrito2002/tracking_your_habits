@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../viewmodels/register_viewmodel.dart';
-import '../home/home_view.dart';
+import '../login/login_view.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -50,7 +50,7 @@ class _RegisterViewState extends State<RegisterView> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const HomeView(),
+          builder: (_) => const LoginView(),
         ),
       );
 
