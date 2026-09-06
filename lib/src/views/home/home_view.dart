@@ -8,6 +8,7 @@ import '../login/login_view.dart';
 import '../../repositories/auth_repository.dart';
 import '../../viewmodels/user_viewmodel.dart';
 import '../calendar/calendar_view.dart';
+import '../../viewmodels/checkin_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -31,6 +32,10 @@ class _HomeViewState extends State<HomeView> {
           id: firebaseUser.uid,
           name: firebaseUser.displayName ?? '',
           email: firebaseUser.email ?? '',
+        );
+
+        context.read<CheckInViewModel>().loadCheckIns(
+          firebaseUser.uid,
         );
       });
     }
@@ -92,6 +97,30 @@ class _HomeViewState extends State<HomeView> {
                   style: const TextStyle(
                     fontSize: 16,
                   ),
+                ),
+
+                Consumer<CheckInViewModel>(
+                  builder: (context, checkInViewModel, child) {
+                    return Column(
+                      children: [
+                        const SizedBox(height: 12),
+                        const Text(
+                          '🔥 Melhor sequência',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '${checkInViewModel.bestStreak} dia(s)',
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
 

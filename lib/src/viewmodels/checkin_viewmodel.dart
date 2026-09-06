@@ -129,4 +129,42 @@ class CheckInViewModel extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  int get bestStreak {
+    if (_checkIns.isEmpty) {
+      return 0;
+    }
+
+    final dates = _checkIns
+        .map(
+          (checkIn) => DateTime(
+        checkIn.date.year,
+        checkIn.date.month,
+        checkIn.date.day,
+      ),
+    )
+        .toSet()
+        .toList();
+
+    dates.sort();
+
+    int best = 1;
+    int current = 1;
+
+    for (int i = 1; i < dates.length; i++) {
+      final difference = dates[i].difference(dates[i - 1]).inDays;
+
+      if (difference == 1) {
+        current++;
+      } else {
+        current = 1;
+      }
+
+      if (current > best) {
+        best = current;
+      }
+    }
+
+    return best;
+  }
 }
