@@ -61,7 +61,7 @@ class _HabitFormViewState extends State<HabitFormView> {
         SnackBar(
           content: Text(
             _frequency == 'Semanal'
-                ? 'Selecione um dia da semana.'
+                ? l10n.selectWeekday
                 : l10n.selectCustomDay,
           ),
         ),
@@ -202,7 +202,7 @@ class _HabitFormViewState extends State<HabitFormView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Dia da semana',
+                    l10n.weekday,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

@@ -57,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            tooltip: 'Sair',
+            tooltip: l10n.logout,
             onPressed: () async {
               await context.read<AuthRepository>().logout();
 
@@ -92,7 +92,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Nível ${user.level}',
+                  l10n.level(user.level),
                   style: const TextStyle(
                     fontSize: 16,
                   ),
@@ -110,8 +110,8 @@ class _HomeViewState extends State<HomeView> {
                     return Column(
                       children: [
                         const SizedBox(height: 12),
-                        const Text(
-                          '🔥 Melhor sequência',
+                        Text(
+                          l10n.bestStreak,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '${checkInViewModel.bestStreak} dia(s)',
+                          l10n.days(checkInViewModel.bestStreak),
                           style: const TextStyle(
                             fontSize: 16,
                           ),
@@ -160,7 +160,7 @@ class _HomeViewState extends State<HomeView> {
               const SizedBox(width: 24),
               IconButton(
                 icon: const Icon(Icons.calendar_month),
-                tooltip: 'Calendário',
+                tooltip: l10n.calendar,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -173,7 +173,7 @@ class _HomeViewState extends State<HomeView> {
               const SizedBox(width: 24),
               IconButton(
                 icon: const Icon(Icons.bar_chart),
-                tooltip: 'Estatísticas',
+                tooltip: l10n.statistics,
                 onPressed: () {
                   Navigator.push(
                     context,

@@ -165,4 +165,103 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get logout => 'Sair';
+
+  @override
+  String level(Object level) {
+    return 'Nível $level';
+  }
+
+  @override
+  String get bestStreak => '🔥 Melhor sequência';
+
+  @override
+  String days(Object count) {
+    return '$count dia(s)';
+  }
+
+  @override
+  String get calendar => 'Calendário';
+
+  @override
+  String get statistics => 'Estatísticas';
+
+  @override
+  String get performance => 'Desempenho';
+
+  @override
+  String successRate(Object rate) {
+    return 'Taxa de sucesso: $rate%';
+  }
+
+  @override
+  String get undoCompletion => 'Desfazer conclusão';
+
+  @override
+  String get markAsCompleted => 'Marcar como concluído';
+
+  @override
+  String get weekday => 'Dia da semana';
+
+  @override
+  String get selectWeekday => 'Selecione um dia da semana.';
+
+  @override
+  String get noHabitsForDay => 'Nenhum hábito previsto para este dia.';
+
+  @override
+  String get january => 'Janeiro';
+
+  @override
+  String get february => 'Fevereiro';
+
+  @override
+  String get march => 'Março';
+
+  @override
+  String get april => 'Abril';
+
+  @override
+  String get may => 'Maio';
+
+  @override
+  String get june => 'Junho';
+
+  @override
+  String get july => 'Julho';
+
+  @override
+  String get august => 'Agosto';
+
+  @override
+  String get september => 'Setembro';
+
+  @override
+  String get october => 'Outubro';
+
+  @override
+  String get november => 'Novembro';
+
+  @override
+  String get december => 'Dezembro';
+
+  @override
+  String get confirmPassword => 'Confirmar senha';
+
+  @override
+  String get enterName => 'Informe seu nome.';
+
+  @override
+  String get passwordMinLength => 'A senha deve ter pelo menos 6 caracteres.';
+
+  @override
+  String get confirmPasswordError => 'Confirme a senha.';
+
+  @override
+  String get passwordsDoNotMatch => 'As senhas não coincidem.';
+
+  @override
+  String get alreadyHaveAccount => 'Já tenho uma conta.';
+
+  @override
+  String get accountCreationError => 'Erro ao criar a conta.';
 }

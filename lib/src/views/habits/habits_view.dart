@@ -88,8 +88,8 @@ class _HabitsViewState extends State<HabitsView> {
                                   : Icons.check_circle_outline,
                             ),
                             tooltip: isChecked
-                                ? 'Desfazer conclusão'
-                                : 'Marcar como concluído',
+                                ? l10n.undoCompletion
+                                : l10n.markAsCompleted,
                             onPressed: () async {
                               if (isChecked) {
                                 await checkInViewModel.removeCheckIn(

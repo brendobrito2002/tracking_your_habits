@@ -5,14 +5,17 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/checkin_viewmodel.dart';
 import '../../viewmodels/habit_viewmodel.dart';
 
+import '/../l10n/app_localizations.dart';
+
 class StatisticsView extends StatelessWidget {
   const StatisticsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Estatísticas'),
+        title: Text(l10n.statistics),
       ),
       body: Consumer2<CheckInViewModel, HabitViewModel>(
         builder: (
@@ -32,8 +35,8 @@ class StatisticsView extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const Text(
-                  'Desempenho',
+                Text(
+                  l10n.performance,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -73,8 +76,9 @@ class StatisticsView extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 Text(
-                  'Taxa de sucesso: '
-                      '${(successRate * 100).round()}%',
+                  l10n.successRate(
+                    (successRate * 100).round(),
+                  ),
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -84,7 +88,7 @@ class StatisticsView extends StatelessWidget {
                 const SizedBox(height: 32),
 
                 Text(
-                  '🔥 Melhor sequência: $bestStreak dias',
+                  '${l10n.bestStreak}: ${l10n.days(bestStreak)}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
