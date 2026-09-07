@@ -165,4 +165,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Sign out';
+
+  @override
+  String level(Object level) {
+    return 'Level $level';
+  }
+
+  @override
+  String get bestStreak => '🔥 Best streak';
+
+  @override
+  String days(Object count) {
+    return '$count day(s)';
+  }
+
+  @override
+  String get calendar => 'Calendar';
+
+  @override
+  String get statistics => 'Statistics';
+
+  @override
+  String get performance => 'Performance';
+
+  @override
+  String successRate(Object rate) {
+    return 'Success rate: $rate%';
+  }
+
+  @override
+  String get undoCompletion => 'Undo completion';
+
+  @override
+  String get markAsCompleted => 'Mark as completed';
+
+  @override
+  String get weekday => 'Day of the week';
+
+  @override
+  String get selectWeekday => 'Select a day of the week.';
+
+  @override
+  String get noHabitsForDay => 'No habits scheduled for this day.';
+
+  @override
+  String get january => 'January';
+
+  @override
+  String get february => 'February';
+
+  @override
+  String get march => 'March';
+
+  @override
+  String get april => 'April';
+
+  @override
+  String get may => 'May';
+
+  @override
+  String get june => 'June';
+
+  @override
+  String get july => 'July';
+
+  @override
+  String get august => 'August';
+
+  @override
+  String get september => 'September';
+
+  @override
+  String get october => 'October';
+
+  @override
+  String get november => 'November';
+
+  @override
+  String get december => 'December';
+
+  @override
+  String get confirmPassword => 'Confirm password';
+
+  @override
+  String get enterName => 'Enter your name.';
+
+  @override
+  String get passwordMinLength => 'Password must be at least 6 characters.';
+
+  @override
+  String get confirmPasswordError => 'Confirm the password.';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match.';
+
+  @override
+  String get alreadyHaveAccount => 'I already have an account.';
+
+  @override
+  String get accountCreationError => 'Error creating the account.';
 }

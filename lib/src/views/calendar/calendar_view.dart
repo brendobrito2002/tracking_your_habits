@@ -6,6 +6,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../../models/habit.dart';
 import '../../viewmodels/checkin_viewmodel.dart';
 import '../../viewmodels/habit_viewmodel.dart';
+import '/../l10n/app_localizations.dart';
 
 class CalendarView extends StatefulWidget {
   const CalendarView({super.key});
@@ -145,20 +146,23 @@ class _CalendarViewState extends State<CalendarView> {
         .toList();
   }
 
-  String _getMonthName(DateTime date) {
-    const months = [
-      'Janeiro',
-      'Fevereiro',
-      'Março',
-      'Abril',
-      'Maio',
-      'Junho',
-      'Julho',
-      'Agosto',
-      'Setembro',
-      'Outubro',
-      'Novembro',
-      'Dezembro',
+  String _getMonthName(
+      DateTime date,
+      AppLocalizations l10n,
+      ) {
+    final months = [
+      l10n.january,
+      l10n.february,
+      l10n.march,
+      l10n.april,
+      l10n.may,
+      l10n.june,
+      l10n.july,
+      l10n.august,
+      l10n.september,
+      l10n.october,
+      l10n.november,
+      l10n.december,
     ];
 
     return months[date.month - 1];
@@ -186,9 +190,10 @@ class _CalendarViewState extends State<CalendarView> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calendário'),
+        title: Text(l10n.calendar),
       ),
       body: Consumer2<CheckInViewModel, HabitViewModel>(
         builder: (
@@ -225,7 +230,7 @@ class _CalendarViewState extends State<CalendarView> {
                     Expanded(
                       child: Center(
                         child: Text(
-                          '${_getMonthName(_focusedDay)} ${_focusedDay.year}',
+                          '${_getMonthName(_focusedDay, l10n)} ${_focusedDay.year}',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -242,7 +247,7 @@ class _CalendarViewState extends State<CalendarView> {
               ),
 
               TableCalendar(
-                locale: 'pt_BR',
+                locale: Localizations.localeOf(context).toString(),
                 firstDay: DateTime.utc(2020, 1, 1),
                 lastDay: DateTime.utc(2035, 12, 31),
                 focusedDay: _focusedDay,
@@ -311,7 +316,7 @@ class _CalendarViewState extends State<CalendarView> {
                           ),
                           trailing: IconButton(
                             icon: const Icon(Icons.check_circle),
-                            tooltip: 'Desfazer conclusão',
+                            tooltip: l10n.undoCompletion,
                             onPressed: () async {
                               final firebaseUser =
                                   FirebaseAuth.instance.currentUser;
@@ -343,7 +348,7 @@ class _CalendarViewState extends State<CalendarView> {
                           ),
                           trailing: IconButton(
                             icon: const Icon(Icons.check_circle_outline),
-                            tooltip: 'Marcar como concluído',
+                            tooltip: l10n.markAsCompleted,
                             onPressed: () async {
                               final firebaseUser =
                                   FirebaseAuth.instance.currentUser;
@@ -365,11 +370,11 @@ class _CalendarViewState extends State<CalendarView> {
 
                     if (completedHabits.isEmpty &&
                         pendingHabits.isEmpty)
-                      const Padding(
-                        padding: EdgeInsets.only(top: 32),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 32),
                         child: Center(
                           child: Text(
-                            'Nenhum hábito previsto para este dia.',
+                            l10n.noHabitsForDay,
                             textAlign: TextAlign.center,
                           ),
                         ),

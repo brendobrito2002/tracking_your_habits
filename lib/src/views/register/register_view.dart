@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../viewmodels/register_viewmodel.dart';
 import '../login/login_view.dart';
+import '/../l10n/app_localizations.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -61,33 +62,34 @@ class _RegisterViewState extends State<RegisterView> {
   }
 
   void _showError(String? errorCode) {
+    final l10n = AppLocalizations.of(context)!;
     if (errorCode == null) return;
 
     String message;
 
     switch (errorCode) {
       case 'invalid-email':
-        message = 'E-mail inválido.';
+        message = l10n.invalidEmail;
         break;
 
       case 'email-already-in-use':
-        message = 'Este e-mail já está cadastrado.';
+        message = l10n.emailAlreadyInUse;
         break;
 
       case 'weak-password':
-        message = 'A senha é muito fraca.';
+        message = l10n.weakPassword;
         break;
 
       case 'network-request-failed':
-        message = 'Erro de conexão com a internet.';
+        message = l10n.networkRequestFailed;
         break;
 
       case 'too-many-requests':
-        message = 'Muitas tentativas. Tente novamente mais tarde.';
+        message = l10n.tooManyRequests;
         break;
 
       default:
-        message = 'Erro ao criar a conta.';
+        message = l10n.accountCreationError;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -99,9 +101,10 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Criar conta'),
+        title: Text(l10n.createAccount),
       ),
       body: Consumer<RegisterViewModel>(
         builder: (context, viewModel, child) {
@@ -115,13 +118,13 @@ class _RegisterViewState extends State<RegisterView> {
                     TextFormField(
                       controller: _nameController,
                       textCapitalization: TextCapitalization.words,
-                      decoration: const InputDecoration(
-                        labelText: 'Nome',
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        labelText: l10n.name,
+                        border: const OutlineInputBorder(),
                       ),
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
-                          return 'Informe seu nome.';
+                          return l10n.enterName;
                         }
 
                         return null;
@@ -132,13 +135,13 @@ class _RegisterViewState extends State<RegisterView> {
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        labelText: 'E-mail',
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        labelText: l10n.email,
+                        border: const OutlineInputBorder(),
                       ),
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
-                          return 'Informe o e-mail.';
+                          return l10n.enterEmail;
                         }
 
                         return null;
@@ -151,7 +154,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: _passwordController,
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
-                        labelText: 'Senha',
+                        labelText: l10n.password,
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -168,11 +171,11 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Informe a senha.';
+                          return l10n.enterPassword;
                         }
 
                         if (value.length < 6) {
-                          return 'A senha deve ter pelo menos 6 caracteres.';
+                          return l10n.passwordMinLength;
                         }
 
                         return null;
@@ -185,7 +188,7 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: _confirmPasswordController,
                       obscureText: _obscureConfirmPassword,
                       decoration: InputDecoration(
-                        labelText: 'Confirmar senha',
+                        labelText: l10n.confirmPassword,
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -203,11 +206,11 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Confirme a senha.';
+                          return l10n.confirmPasswordError;
                         }
 
                         if (value != _passwordController.text) {
-                          return 'As senhas não coincidem.';
+                          return l10n.passwordsDoNotMatch;
                         }
 
                         return null;
@@ -227,7 +230,7 @@ class _RegisterViewState extends State<RegisterView> {
                           height: 24,
                           child: CircularProgressIndicator(),
                         )
-                            : const Text('Criar conta'),
+                            : Text(l10n.createAccount),
                       ),
                     ),
 
@@ -237,7 +240,7 @@ class _RegisterViewState extends State<RegisterView> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const Text('Já tenho uma conta'),
+                      child: Text(l10n.alreadyHaveAccount),
                     ),
                   ],
                 ),
