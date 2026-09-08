@@ -264,4 +264,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get accountCreationError => 'Erro ao criar a conta.';
+
+  @override
+  String get takePhoto => 'Tirar foto';
+
+  @override
+  String get chooseFromGallery => 'Escolher da galeria';
+
+  @override
+  String get removePhoto => 'Remover foto';
 }
