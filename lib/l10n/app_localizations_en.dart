@@ -264,4 +264,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountCreationError => 'Error creating the account.';
+
+  @override
+  String get takePhoto => 'Take photo';
+
+  @override
+  String get chooseFromGallery => 'Choose from gallery';
+
+  @override
+  String get removePhoto => 'Remove photo';
 }

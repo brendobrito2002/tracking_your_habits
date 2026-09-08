@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ import '../../viewmodels/checkin_viewmodel.dart';
 import '../statistics/statistics_view.dart';
 import '../../viewmodels/habit_viewmodel.dart';
 import '../../viewmodels/theme_viewmodel.dart';
+import '../../viewmodels/photo_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,6 +44,10 @@ class _HomeViewState extends State<HomeView> {
         );
 
         context.read<HabitViewModel>().loadHabits(
+          firebaseUser.uid,
+        );
+
+        context.read<PhotoViewModel>().loadPhoto(
           firebaseUser.uid,
         );
       });
@@ -97,6 +103,72 @@ class _HomeViewState extends State<HomeView> {
                 const SizedBox(height: 24),
 
                 if (user != null) ...[
+                  Consumer<PhotoViewModel>(
+                    builder: (context, photoViewModel, child) {
+                      return GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return SafeArea(
+                                child: Wrap(
+                                  children: [
+                                    ListTile(
+                                      leading: const Icon(Icons.camera_alt),
+                                      title: Text(l10n.takePhoto),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        photoViewModel.takePhoto(
+                                          FirebaseAuth.instance.currentUser!.uid,
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      leading: const Icon(Icons.photo_library),
+                                      title: Text(l10n.chooseFromGallery),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        photoViewModel.pickPhoto(
+                                          FirebaseAuth.instance.currentUser!.uid,
+                                        );
+                                      },
+                                    ),
+                                    if (photoViewModel.photoPath != null)
+                                      ListTile(
+                                        leading: const Icon(Icons.delete),
+                                        title: Text(l10n.removePhoto),
+                                        onTap: () {
+                                          Navigator.pop(context);
+
+                                          photoViewModel.removePhoto(
+                                            FirebaseAuth.instance.currentUser!.uid,
+                                          );
+                                        },
+                                      ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundImage: photoViewModel.photoPath != null
+                              ? FileImage(
+                            File(photoViewModel.photoPath!),
+                          )
+                              : null,
+                          child: photoViewModel.photoPath == null
+                              ? const Icon(
+                            Icons.person,
+                            size: 50,
+                          )
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 16),
                   Text(
                     user.name,
                     style: const TextStyle(

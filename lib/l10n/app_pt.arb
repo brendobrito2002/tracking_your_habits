@@ -90,5 +90,8 @@
   "confirmPasswordError": "Confirme a senha.",
   "passwordsDoNotMatch": "As senhas não coincidem.",
   "alreadyHaveAccount": "Já tenho uma conta.",
-  "accountCreationError": "Erro ao criar a conta."
+  "accountCreationError": "Erro ao criar a conta.",
+  "takePhoto": "Tirar foto",
+  "chooseFromGallery": "Escolher da galeria",
+  "removePhoto": "Remover foto"
 }

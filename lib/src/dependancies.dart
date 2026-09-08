@@ -24,6 +24,9 @@ import 'viewmodels/checkin_viewmodel.dart';
 import 'repositories/theme_repository.dart';
 import 'viewmodels/theme_viewmodel.dart';
 
+import 'repositories/photo_repository.dart';
+import 'viewmodels/photo_viewmodel.dart';
+
 final appProviders = [
   Provider<AuthDataSource>(
     create: (_) => AuthDataSource(),
@@ -127,6 +130,18 @@ final appProviders = [
       viewModel.loadTheme();
 
       return viewModel;
+    },
+  ),
+
+  Provider<PhotoRepository>(
+    create: (_) => PhotoRepository(),
+  ),
+
+  ChangeNotifierProvider<PhotoViewModel>(
+    create: (context) {
+      return PhotoViewModel(
+        context.read<PhotoRepository>(),
+      );
     },
   ),
 ];
