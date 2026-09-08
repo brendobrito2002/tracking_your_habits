@@ -11,6 +11,7 @@ import '../calendar/calendar_view.dart';
 import '../../viewmodels/checkin_viewmodel.dart';
 import '../statistics/statistics_view.dart';
 import '../../viewmodels/habit_viewmodel.dart';
+import '../../viewmodels/theme_viewmodel.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -56,6 +57,16 @@ class _HomeViewState extends State<HomeView> {
         title: Text(l10n.appTitle),
         actions: [
           IconButton(
+            icon: Icon(
+              context.watch<ThemeViewModel>().themeMode == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode,
+            ),
+            onPressed: () {
+              context.read<ThemeViewModel>().toggleTheme();
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.logout),
             tooltip: l10n.logout,
             onPressed: () async {
@@ -78,64 +89,64 @@ class _HomeViewState extends State<HomeView> {
         builder: (context, viewModel, child) {
           final user = viewModel.user;
 
-          return Column(
-            children: [
-              const SizedBox(height: 24),
+          return SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 24),
 
-              if (user != null) ...[
-                Text(
-                  user.name,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                if (user != null) ...[
+                  Text(
+                    user.name,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  l10n.level(user.level),
-                  style: const TextStyle(
-                    fontSize: 16,
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.level(user.level),
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '${user.experience} XP / ${viewModel.requiredExperience} XP',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  const SizedBox(height: 4),
+                  Text(
+                    '${user.experience} XP / ${viewModel.requiredExperience} XP',
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
-                ),
 
-                Consumer<CheckInViewModel>(
-                  builder: (context, checkInViewModel, child) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 12),
-                        Text(
-                          l10n.bestStreak,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                  Consumer<CheckInViewModel>(
+                    builder: (context, checkInViewModel, child) {
+                      return Column(
+                        children: [
+                          const SizedBox(height: 12),
+                          Text(
+                            l10n.bestStreak,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          l10n.days(checkInViewModel.bestStreak),
-                          style: const TextStyle(
-                            fontSize: 16,
+                          const SizedBox(height: 4),
+                          Text(
+                            l10n.days(checkInViewModel.bestStreak),
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                        ],
+                      );
+                    },
+                  ),
+                ],
+
+                const SizedBox(height: 24),
               ],
-
-              const SizedBox(height: 24),
-
-              Center(
-                child: Text(l10n.loginSuccess),
-              ),
-            ],
+            ),
           );
         },
       ),

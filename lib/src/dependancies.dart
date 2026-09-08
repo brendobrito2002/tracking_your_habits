@@ -21,6 +21,9 @@ import 'datasources/checkin_datasource.dart';
 import 'repositories/checkin_repository.dart';
 import 'viewmodels/checkin_viewmodel.dart';
 
+import 'repositories/theme_repository.dart';
+import 'viewmodels/theme_viewmodel.dart';
+
 final appProviders = [
   Provider<AuthDataSource>(
     create: (_) => AuthDataSource(),
@@ -108,6 +111,22 @@ final appProviders = [
         context.read<CheckInRepository>(),
         context.read<UserViewModel>(),
       );
+    },
+  ),
+
+  Provider<ThemeRepository>(
+    create: (_) => ThemeRepository(),
+  ),
+
+  ChangeNotifierProvider<ThemeViewModel>(
+    create: (context) {
+      final viewModel = ThemeViewModel(
+        context.read<ThemeRepository>(),
+      );
+
+      viewModel.loadTheme();
+
+      return viewModel;
     },
   ),
 ];
